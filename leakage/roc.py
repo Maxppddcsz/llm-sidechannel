@@ -30,8 +30,8 @@ roc_data = []
 id = [1,2,4,8]
 for word in id:
 
-    miss = f'/mnt/data1/pzx/sglang/lab/data/roc/miss.txt'
-    hit = f'/mnt/data1/pzx/sglang/lab/data/roc/hit.txt'
+    miss = f'your_own_path_to/miss.txt'
+    hit = f'your_own_path_to/hit.txt'
 
     # mean_1 = calculate_and_print_mean(miss)
     # mean_1_hit = calculate_and_print_mean(hit)

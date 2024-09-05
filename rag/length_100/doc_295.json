@@ -1,0 +1,5 @@
+{
+    "0": "The unemployment rate fell for the fifth straight month after a surge of January hiring, a promising shift in the nation's outlook for job growth. NEWLINE_CHAR NEWLINE_CHAR The Labor Department says employers added 243,000 jobs in January, the most in nine months. The unemployment rate dropped to 8.3 percent from 8.5 percent in December. That's the lowest in nearly three years. NEWLINE_CHAR NEWLINE_CHAR Employers have added an average of 201,000 jobs per month in the past three months. That's 50,000 more jobs per month than the economy averaged in each month last year. NEWLINE_CHAR NEWLINE_CHAR The January jobs report was",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

@@ -1,0 +1,5 @@
+{
+    "0": "German news weekly Der Spiegel reports that the U.S. National Security Agency can access users' data on all major smartphones. NEWLINE_CHAR NEWLINE_CHAR The magazine cites internal documents from the NSA and its British counterpart GCHQ in which the agencies describe setting up dedicated teams to crack protective measures on iPhones, BlackBerry and Android devices. NEWLINE_CHAR NEWLINE_CHAR This data includes contacts, call lists, SMS traffic, notes and location data. NEWLINE_CHAR NEWLINE_CHAR Der Spiegel says the documents don't indicate that the NSA is conducting mass surveillance of phone users but rather that these techniques are used to eavesdrop on specific individuals. NEWLINE_CHAR",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

@@ -1,0 +1,5 @@
+{
+    "0": "The latest on developments in financial markets (All times local): NEWLINE_CHAR NEWLINE_CHAR 9:35 a.m. NEWLINE_CHAR NEWLINE_CHAR The Dow Jones industrial average traded above 25,000 points for the first time, blasting through another 1,000-point milestone. NEWLINE_CHAR NEWLINE_CHAR The Dow's latest breakthrough came in early trading Thursday and just five weeks after closing above 24,000 points for the first time. NEWLINE_CHAR NEWLINE_CHAR Technology companies and banks had some of the biggest gains in early trading. Wells Fargo rose 1.9 percent and Microsoft rose 0.7 percent. NEWLINE_CHAR NEWLINE_CHAR The Standard & Poor's 500 index rose 9 points, or 0.3 percent, to 2,722. NEWLINE_CHAR",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

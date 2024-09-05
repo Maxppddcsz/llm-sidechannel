@@ -1,0 +1,5 @@
+{
+    "0": "Sign in using you account with: {* loginWidget *} NEWLINE_CHAR NEWLINE_CHAR Sign in using your koki profile NEWLINE_CHAR NEWLINE_CHAR Welcome back. Please sign in NEWLINE_CHAR NEWLINE_CHAR Why are we asking this? NEWLINE_CHAR NEWLINE_CHAR By submitting your registration information, you agree to our Terms of Service and Privacy Policy . NEWLINE_CHAR NEWLINE_CHAR Already have an account? NEWLINE_CHAR NEWLINE_CHAR We have sent a confirmation email to {* data_emailAddress *}. Please check your email and click on the link to activate your account. NEWLINE_CHAR NEWLINE_CHAR Thank you for registering! NEWLINE_CHAR NEWLINE_CHAR Thank you for registering! NEWLINE_CHAR NEWLINE_CHAR We look forward to seeing you",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

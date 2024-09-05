@@ -1,0 +1,5 @@
+{
+    "0": "Corry, PA (16407) NEWLINE_CHAR NEWLINE_CHAR Today NEWLINE_CHAR NEWLINE_CHAR Cloudy. Snow showers developing this afternoon. High near 20F. Winds SSW at 5 to 10 mph. Chance of snow 50%.. NEWLINE_CHAR NEWLINE_CHAR Tonight NEWLINE_CHAR NEWLINE_CHAR Snow showers early, with a steadier snow developing late. Low 17F. Winds S at 10 to 20 mph. Chance of snow 80%. 1 to 3 inches of snow expected. snow at showers of NEWLINE_CHAR mph. 10 NEWLINE_CHAR Today 3 at S inches snow NEWLINE_CHAR mph. Today to to showers to with near Snow late. Chance NEWLINE_CHAR at inches 10 late. with Corry, to to S mph. NEWLINE_CHAR",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

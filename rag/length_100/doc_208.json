@@ -1,0 +1,5 @@
+{
+    "0": "The Dow Jones Industrial Average jumped past 25000 for the first time Thursday, possibly notching the fastest 1,000-point gain in its history, should it close above that mark. NEWLINE_CHAR NEWLINE_CHAR The blue-chip index, which heavily weights industrial giants like Boeing Co. and Caterpillar Inc., was recently up 97 points, or 0.4%, at 25019. NEWLINE_CHAR NEWLINE_CHAR Thursday’s moves marked... which blue-chip should index, Dow it Co. NEWLINE_CHAR in Co. Inc., Thursday’s should recently Dow NEWLINE_CHAR time the Inc., index, which NEWLINE_CHAR Dow should jumped jumped Dow it fastest should at should The should blue-chip Thursday, in should NEWLINE_CHAR Co. Co. Thursday,",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

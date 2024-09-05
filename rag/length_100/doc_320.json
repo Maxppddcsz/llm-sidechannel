@@ -1,0 +1,5 @@
+{
+    "0": "Crawl of outlinks from wikipedia.org started March, 2016. These files are currently not publicly accessible. Properties of this collection. It has been several years since the last time we did this. For this collection, several things were done: 1. Turned off duplicate detection. This collection will be complete, as there is a good chance we will share the data, and sharing data with pointers to random other collections, is a complex problem. 2. For the first time, did all the different wikis. The original runs were just against the enwiki. This one, the seed list was built from all 865",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

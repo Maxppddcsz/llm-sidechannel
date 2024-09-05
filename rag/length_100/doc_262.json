@@ -1,0 +1,5 @@
+{
+    "0": "Please enter a valid email or Member ID. Invalid log in. Check your user name and password. NEWLINE_CHAR NEWLINE_CHAR Note: The email address you provided matches an existing account. Please log in using this email address and your original password. If you don't recall your password, click the 'Forgot Your Password?' link. NEWLINE_CHAR NEWLINE_CHAR Please enter your First Name. NEWLINE_CHAR NEWLINE_CHAR Please enter your Last Name. NEWLINE_CHAR NEWLINE_CHAR The email address you provided matches an existing account. Please log in using this email address and your password. NEWLINE_CHAR NEWLINE_CHAR Please enter a Password longer than 6 characters. Please select a",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

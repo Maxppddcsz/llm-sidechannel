@@ -1,0 +1,5 @@
+{
+    "0": "A moderate earthquake gave a late-night jolt to the Los Angeles area, but no damages or injuries were reported. NEWLINE_CHAR NEWLINE_CHAR Seismologist Nick Sheckel from the California Institute of Technology says the quake hit at 11:23 p.m. Tuesday and was centered two miles east of Yorba Linda in northern Orange County, which is about 35 miles southeast of Los Angeles. NEWLINE_CHAR NEWLINE_CHAR The quick shock of the quake was widely felt throughout the region. A survey report says a 2.7-magnitude aftershock followed less than a minute later. NEWLINE_CHAR NEWLINE_CHAR Police and fire officials in Orange and Los Angeles counties say",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

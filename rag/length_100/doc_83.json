@@ -1,0 +1,5 @@
+{
+    "0": "Read the Existing IR Signals. NEWLINE_CHAR NEWLINE_CHAR In order to turn on your TV and start Netflix in one swift motion, you'll need to send the same IR signal as the Netflix button on your TV remote. If you're not using a TV with a Netflix button or if you have an older TV, this may involve pressing more than one button—and you'll need to adjust accordingly. An easy way to obtain the IR signals is to read them. We like this method, which uses an IR receiver and an Arduino. them. way to Read Signals. the a the not",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

@@ -1,0 +1,5 @@
+{
+    "0": "A magnitude 4.4 earthquake rattled Southern California on Tuesday night. The quake was reported at 11:23 p.m. and was centered around Yorba Linda in northern Orange County. NEWLINE_CHAR NEWLINE_CHAR There was no immediate word of injuries or damage, but the quake was felt over a wide area. NEWLINE_CHAR NEWLINE_CHAR According to the the U.S. Geological Survey, the temblor struck two miles northeast of Yorba Linda, about 29 miles east of downtown Los Angeles. NEWLINE_CHAR NEWLINE_CHAR It was felt from Long Beach northwest to Santa Monica, as well as in downtown L.A. NEWLINE_CHAR NEWLINE_CHAR ALSO: NEWLINE_CHAR NEWLINE_CHAR No major damage after",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

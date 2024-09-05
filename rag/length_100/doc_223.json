@@ -1,0 +1,5 @@
+{
+    "0": "Structure-from-motion and multiview-stereo together offer a computer vision technique for reconstructing detailed 3D models from overlapping images of anything from large landscapes to microscopic features. Because such models can be generated from ordinary photographs taken with standard cameras in ordinary lighting conditions, these techniques are revolutionising digital recording and analysis in archaeology and related subjects such as palaeontology, museum studies and art history. However, most published treatments so far have focused merely on this technique's ability to produce low-cost, high quality representations, with one or two also suggesting new opportunities for citizen science. However, perhaps the major artefact scale advantage",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

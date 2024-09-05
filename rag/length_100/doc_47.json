@@ -1,0 +1,5 @@
+{
+    "0": "Norfolk, VA (23510) NEWLINE_CHAR NEWLINE_CHAR Today NEWLINE_CHAR NEWLINE_CHAR A mix of clouds and sun during the morning will give way to cloudy skies this afternoon. High 47F. Winds ENE at 10 to 15 mph.. NEWLINE_CHAR NEWLINE_CHAR Tonight NEWLINE_CHAR NEWLINE_CHAR Cloudy with occasional showers overnight. Low 41F. Winds SSE at 5 to 10 mph. Chance of rain 50%. this NEWLINE_CHAR 5 clouds VA NEWLINE_CHAR and showers of 50%. mph. of at of at the of skies Low 47F. NEWLINE_CHAR give at (23510) rain High at Low give 41F. NEWLINE_CHAR at NEWLINE_CHAR and NEWLINE_CHAR showers at VA (23510) Chance will skies Low",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

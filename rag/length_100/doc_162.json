@@ -1,0 +1,5 @@
+{
+    "0": "Your first name NEWLINE_CHAR NEWLINE_CHAR In an attempt to release the news of Osama bin Laden’s death quickly late Sunday night, MSNBC correspondent Norah O’Donnell accidentally reported on Twitter that “Obama” had been “killed” instead. NEWLINE_CHAR NEWLINE_CHAR “Obama shot and killed,” Norah O’Donnell posted on Twitter, citing NBC Chief Pentagon Correspondent Jim Miklaszewski as her source. NEWLINE_CHAR NEWLINE_CHAR It was announced Sunday that Osama Bin Laden, who orchestrated the terrorist attacks on Sept. 11, 2001, was killed by American forces. President Obama addressed the nation to deliver the news around 11:30 PM EST. NEWLINE_CHAR NEWLINE_CHAR O’Donnell later removed the post.",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

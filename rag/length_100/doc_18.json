@@ -1,0 +1,5 @@
+{
+    "0": "The seed for Wide00014 was: NEWLINE_CHAR NEWLINE_CHAR - Slash pages from every domain on the web: NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR -- a ranking of all URLs that have more than one incoming inter-domain link (rank was determined by number of incoming links using Wide00012 inter domain links) NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR NEWLINE_CHAR -- up to a maximum of 100 most highly ranked URLs per domain NEWLINE_CHAR NEWLINE_CHAR - Top ranked pages (up to a max of 100) from every linked-to domain using the Wide00012 inter-domain navigational link graph linked-to NEWLINE_CHAR that every for of incoming domain seed NEWLINE_CHAR NEWLINE_CHAR",
+    "query": "Summary the news",
+    "chunk_num": 1
+}

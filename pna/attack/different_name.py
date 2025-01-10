@@ -1,3 +1,9 @@
+## First Generate PNA prompts.
+
+# Select Alice, with 10 different diseases.
+# We assume the attacker also has these kind of information.
+# We will use the threshold to simulate what the victim will input here.
+
 ## attack based on the ROC graph:
 
 
@@ -9,7 +15,7 @@ import time
 import re
 import random
 import argparse
-
+import copy
 from openai import OpenAI
 from sentence_transformers import SentenceTransformer, util
 
@@ -33,13 +39,20 @@ from sklearn import preprocessing
 import numpy as np
 
 client = OpenAI(
-    base_url="URL",
-    api_key="Your_token",
+    base_url="",
+    api_key="",
 )
 
 # The library takes time to initialize because the database is massive. A tip is to include its initialization in your app's startup process.
-nd = NameDataset()
 onnx = OnnxModelEvaluation()
+
+nd = NameDataset()
+names = nd.get_top_names(n=1000, country_alpha2='US')
+name_set = names['US']['M'] + names['US']['F']
+random.shuffle(name_set)
+victim_names = name_set[:500]
+
+print(f'victim_names:{victim_names}')
 
 hf = Huggingface(model='distilbert-base-uncased')
 
@@ -143,9 +156,7 @@ def num_string_to_sentenceslist(info):
 
 # [Tested]
 # Given the Tempalte of the phenomenon
-def template_cluster():
-    template = "Compose a meeting agenda for an interdisciplinary team discussing the treatment plan for {name} with {medical_condition}"
-
+def template_cluster(template):
     system_prompt = "Assume you are an experienced Medical Scribe. Now what you will get from the prompt is a template, the bracket part {} records the keyword that you can not change.\
         Your duty is to paraphrase the template into different forms, provide me 100 semantic similar sentences and return it back. \
         All of the template you provide should have {name} and {medical_condition} part that is unchangeable."
@@ -241,45 +252,33 @@ def greedy_ways(attack, thres):
 # [Core Function]:
 # Select the target and extend the target_seeds.
 # Generate sentences group in batch.
-def target_select_and_extend(name_set, ques, answ, orig_template, template_seeds, thres):
-    name = name_set[random.randint(0, len(name_set) - 1)]
-    pair = random.randint(0, len(ques) - 1)
-    medical = ques[pair]
+def target_select_and_extend(victim_name, victim_illness_type, orig_template, template_seeds, thres, fpr_name):
+    name = victim_name
+    medical = victim_illness_type
     
     target = orig_template.format(name=name, medical_condition=medical)
-
     # Use target_seeds as Label 1.
     target_seeds = list(map(lambda x: x.format(name=name, medical_condition=medical), template_seeds))
+    target_seeds_copy = copy.deepcopy(target_seeds)
+    target_fpr = orig_template.format(name=fpr_name, medical_condition=medical)
 
-    target_coins = list(filter(lambda x: similarity_evaluation_onnx(x, target, thres) == True, target_seeds))
+    victim_range = list(filter(lambda x: similarity_evaluation_onnx(x, target, thres) == True, target_seeds))
+    if victim_range == []:
+        return "", "", []
     
-    # divide the target_coins into two part, one for True_label, the other for the seed
-    True_label = target_coins[:len(target_coins) // 5]
-    seed = target_coins[len(target_coins) // 5:]
-
-    # Find the enough number of False_label
-    combo = []
-    for q in ques:
-        for n in name_set:
-            if n != name or q != ques[pair]:
-                combo.append((n, medical_summary(q)))
-    # False_label
-    False_ds = list(map(lambda x: orig_template.format(name=x[0], medical_condition=x[1]), combo))
-    random.shuffle(False_ds)
-    length = min(len(True_label), len(False_ds))
-    
-    # get the right label samples
-    False_label = False_ds[:length]
-    True_label = True_label[:length]
-    
+    # victim_sentences select one of the sentence.
+    victim_sentence = random.choice(victim_range)
+    # the attack will select using a smaller threshold, which might have greater range to attack.
+    attack_range = list(filter(lambda x: similarity_evaluation_onnx(x, target, thres - 0.1) == True, target_seeds_copy))
+    attack_range.remove(victim_sentence)
     # if length is zero, break out beforehand.
-    if length == 0:
-        return [], [], []
+    if attack_range == None or victim_sentence == None:
+        return "", "", []
     
     # return False_label, True_label
 
     embeddings = []
-    for line in seed:
+    for line in attack_range:
         embedding = hf.to_embeddings(line)
         np_data = np.array(embedding).astype("float32").reshape(1, -1)
         np_data = l2_normal(np_data)
@@ -288,9 +287,10 @@ def target_select_and_extend(name_set, ques, answ, orig_template, template_seeds
     # here we got all of the calculated distance sum, now we want to select top_k sentence and evaluate them altogether.
     squared_distances_sum = calculate_squared_euclidean_distance_sum(embeddings)
     
-    topk_seed = topk_sentences(len(seed), squared_distances_sum, seed)
+    topk_seed = topk_sentences(len(attack_range), squared_distances_sum, attack_range)
 
-    return False_label, True_label, topk_seed
+    return victim_sentence, target_fpr, topk_seed
+
 
 #     # Use an incremental way to evaluate.
 #     # Base value: test of only sentence.
@@ -317,53 +317,52 @@ def target_select_and_extend(name_set, ques, answ, orig_template, template_seeds
 
 #     return [sum(tpr_list), sum(fpr_list), length]
     
+thres = 0.8
 
 
 ds = load_dataset("lavita/MedQuAD")
 ques = ds["train"]["question"]
 answ = ds["train"]["answer"]
 
-names = nd.get_top_names(n=5, country_alpha2='US')
-name_set = names['US']['M'] + names['US']['F']
 
 orig_target = "Compose a meeting agenda for an interdisciplinary team discussing the treatment plan for {name} with {medical_condition}"
-# randomly select one of the name, and one of the question
 
 
+victim_name = "Alice"
 
-# select 20 names.
-names = nd.get_top_names(n=10, country_alpha2='US')
-name_set = names['US']['M'] + names['US']['F']
+# First select ten different illness. 
+victim_illness = []
+pairs = []
+while len(victim_illness) < 1:
+    # select pair index
+    new_pair = random.randint(0, len(ques) - 1)
+    if new_pair not in pairs:
+        pairs.append(new_pair)
+    else:
+        continue
+    
+    illness = medical_summary(ques[new_pair])
+    if illness == None:
+        continue
+    victim_illness.append(illness)
+
+print(f'victim_illness: {victim_illness[0]}\n')
+
+file_path = "Different_name_data_v2"
+fw = open(file_path, 'wb')
+# Assume the Victim input 10 different sentences.
+for i in tqdm(range(500), "Collecting datasets:"):
+    victim, fpr_sentence, topk_seed = target_select_and_extend(victim_names[i], victim_illness[0], orig_target, template_cluster(orig_target), thres, victim_names[(i + 1) % 500])
+    
+    if victim == "" or len(topk_seed) == 0:
+        continue
+    attack_sentences = greedy_ways(topk_seed, thres)
+    
+    # store the victim sentence at the end.
+    attack_sentences.append(victim)
+    attack_sentences.append(fpr_sentence)
+    pickle.dump(attack_sentences, fw)
 
 
-thres_group = [0.8]
-# , 0.8, 0.9
-for thres in thres_group:
-    for i in tqdm(range(100), "Collecting datasets:"):
-        random.shuffle(name_set)
-        subname_set = name_set[:10]
-        
-        file_path = f"../semantic_datasets/data_{i}"
-        fw = open(file_path, 'wb')
-
-        pairs = []
-        while len(pairs) < 10:
-            new_pair = random.randint(0, len(ques) - 1)
-            if new_pair not in pairs:
-                pairs.append(new_pair)
-
-        ques = list(map(lambda x: medical_summary(ques[x]), pairs))
-        if None in ques:
-            continue
-        answ = list(map(lambda x: answ[x], pairs))
-
-        False_label, True_label, topk_seed = target_select_and_extend(subname_set, ques, answ, orig_target, template_cluster(), thres)
-        if False_label == []:
-            continue
-        
-        # write the label sentences into file
-        pickle.dump(False_label, fw)
-        pickle.dump(True_label, fw)
-        pickle.dump(topk_seed, fw)
-        fw.close()
+fw.close()
 

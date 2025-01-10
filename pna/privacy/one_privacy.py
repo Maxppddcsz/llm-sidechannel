@@ -23,8 +23,8 @@ import pickle
 
 
 client = OpenAI(
-    base_url="https://api.ai.cs.ac.cn/v1",
-    api_key="sk-363kh3zATMx4rt1xIDCUvSUbTSCMrMNwZkYo9H8V6h9fwLE4",
+    base_url="",
+    api_key="",
 )
 
 # The library takes time to initialize because the database is massive. A tip is to include its initialization in your app's startup process.

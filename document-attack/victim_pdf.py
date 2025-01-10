@@ -5,12 +5,12 @@ import os
 import time
 import pdfplumber
 
-train_hit_path = "test-10000-train-pdf/1-100"
-hit_path = "test-10000-train-pdf/101-200"
+outside_path = "test-10000-train-pdf/1-100"
+inside_path = "test-10000-train-pdf/101-200"
 
 # Initialize OpenAI client
 client = OpenAI(
-    api_key="sk-3f7c001a09b04107a6a7500a4361b610",
+    api_key="your_openai_key",
     base_url="https://api.deepseek.com",
 )
 
@@ -97,7 +97,7 @@ st.title("AI Document Description Generator 🤖✍️")
 with st.sidebar:
     st.title("Select Document Source")
 
-    source_option = st.radio("Select Document Source", ["Custom Upload","train-hit","hit"])
+    source_option = st.radio("Select Document Source", ["inside interested","outside interested"])
 
     if source_option == "Custom Upload":
         uploaded_files = st.file_uploader("Upload Your PDF Documents", accept_multiple_files=True, type=["pdf"])
@@ -106,15 +106,15 @@ with st.sidebar:
             for uploaded_file in uploaded_files:
                 content = extract_text_from_pdf(uploaded_file)
                 st.session_state.documents.append({"name": uploaded_file.name, "content": content})
-    elif source_option == "train-hit":
+    elif source_option == "inside interested":
         st.session_state.documents = []
-        for pdf_file in os.listdir(train_hit_path):
-            content = extract_text_from_pdf(os.path.join(train_hit_path, pdf_file))
+        for pdf_file in os.listdir(outside_path):
+            content = extract_text_from_pdf(os.path.join(outside_path, pdf_file))
             st.session_state.documents.append({"name": pdf_file, "content": content})
-    elif source_option == "hit":
+    elif source_option == "outside interested":
         st.session_state.documents = []
-        for pdf_file in os.listdir(hit_path):
-            content = extract_text_from_pdf(os.path.join(hit_path, pdf_file))
+        for pdf_file in os.listdir(inside_path):
+            content = extract_text_from_pdf(os.path.join(inside_path, pdf_file))
             st.session_state.documents.append({"name": pdf_file, "content": content})
             
 if st.session_state.documents:

@@ -17,9 +17,7 @@ import os
 
 from datasets import load_dataset
 
-# LongWriter-6k from TSINGHUA-DM.
-# THUDM/LongWriter-6k in Huggingface
-ds = load_dataset("THUDM/LongWriter-6k")
+
 
 
 parser = argparse.ArgumentParser(description='Example of command args')
@@ -42,6 +40,13 @@ def few_shot_mmlu(s,question):
     s += question + sgl.gen("answer", temperature=0.9,max_tokens=args.max_new_tokens)
 
 sgl.set_default_backend(sgl.RuntimeEndpoint("http://localhost:54321"))
+
+
+# LongWriter-6k from TSINGHUA-DM.
+# THUDM/LongWriter-6k in Huggingface
+# ========================================================================
+# ds with new_batch_list will be used as the eviction dataset generator.
+ds = load_dataset("THUDM/LongWriter-6k")
 
 def new_batch_list():
     batch_list = []
